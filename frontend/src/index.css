@@ -1,0 +1,190 @@
+@import "tailwindcss";
+
+@theme {
+  /* ── COLORS ─────────────────────────────────────────── */
+  --color-primary-50:  #f0fdf4;
+  --color-primary-100: #dcfce7;
+  --color-primary-200: #bbf7d0;
+  --color-primary-300: #86efac;
+  --color-primary-400: #4ade80;
+  --color-primary-500: #22c55e;
+  --color-primary-600: #16a34a;
+  --color-primary-700: #15803d;
+  --color-primary-800: #166534;
+  --color-primary-900: #14532d;
+  --color-primary-950: #052e16;
+
+  --color-neutral-50:  #f8fafc;
+  --color-neutral-100: #f1f5f9;
+  --color-neutral-200: #e2e8f0;
+  --color-neutral-300: #cbd5e1;
+  --color-neutral-400: #94a3b8;
+  --color-neutral-500: #64748b;
+  --color-neutral-600: #475569;
+  --color-neutral-700: #334155;
+  --color-neutral-800: #1e293b;
+  --color-neutral-900: #0f172a;
+  --color-neutral-950: #020617;
+
+  --color-success: #16a34a;
+  --color-warning: #d97706;
+  --color-error:   #dc2626;
+  --color-info:    #0284c7;
+
+  --color-background: #ffffff;
+  --color-surface:    #f8fafc;
+  --color-border:     #e2e8f0;
+  --color-muted:      #94a3b8;
+
+  /* ── TYPOGRAPHY — FONT FAMILIES ─────────────────────── */
+  --font-sans:    "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Clash Display", "Plus Jakarta Sans", sans-serif;
+  --font-mono:    "JetBrains Mono", ui-monospace, monospace;
+
+  /* ── TYPOGRAPHY — FONT SIZES ────────────────────────── */
+  --font-size-2xs:  0.625rem;   /* 10px */
+  --font-size-xs:   0.75rem;    /* 12px */
+  --font-size-sm:   0.875rem;   /* 14px */
+  --font-size-base: 1rem;       /* 16px */
+  --font-size-md:   1rem;       /* 16px alias */
+  --font-size-lg:   1.125rem;   /* 18px */
+  --font-size-xl:   1.25rem;    /* 20px */
+  --font-size-2xl:  1.5rem;     /* 24px */
+  --font-size-3xl:  1.875rem;   /* 30px */
+  --font-size-4xl:  2.25rem;    /* 36px */
+  --font-size-5xl:  3rem;       /* 48px */
+  --font-size-6xl:  3.75rem;    /* 60px */
+  --font-size-7xl:  4.5rem;     /* 72px */
+  --font-size-8xl:  6rem;       /* 96px */
+
+  /* ── TYPOGRAPHY — FONT WEIGHTS ──────────────────────── */
+  --font-weight-thin:       100;
+  --font-weight-light:      300;
+  --font-weight-normal:     400;
+  --font-weight-medium:     500;
+  --font-weight-semibold:   600;
+  --font-weight-bold:       700;
+  --font-weight-extrabold:  800;
+  --font-weight-black:      900;
+
+  /* ── TYPOGRAPHY — LINE HEIGHTS ──────────────────────── */
+  --line-height-none:    1;
+  --line-height-tight:   1.25;
+  --line-height-snug:    1.375;
+  --line-height-normal:  1.5;
+  --line-height-relaxed: 1.625;
+  --line-height-loose:   2;
+
+  /* ── TYPOGRAPHY — LETTER SPACING ────────────────────── */
+  --letter-spacing-tighter: -0.05em;
+  --letter-spacing-tight:   -0.025em;
+  --letter-spacing-normal:   0em;
+  --letter-spacing-wide:     0.025em;
+  --letter-spacing-wider:    0.05em;
+  --letter-spacing-widest:   0.1em;
+
+  /* ── SPACING ─────────────────────────────────────────── */
+  --spacing-px:   1px;
+  --spacing-0:    0;
+  --spacing-0-5:  0.125rem;  /* 2px  */
+  --spacing-1:    0.25rem;   /* 4px  */
+  --spacing-1-5:  0.375rem;  /* 6px  */
+  --spacing-2:    0.5rem;    /* 8px  */
+  --spacing-2-5:  0.625rem;  /* 10px */
+  --spacing-3:    0.75rem;   /* 12px */
+  --spacing-3-5:  0.875rem;  /* 14px */
+  --spacing-4:    1rem;      /* 16px */
+  --spacing-5:    1.25rem;   /* 20px */
+  --spacing-6:    1.5rem;    /* 24px */
+  --spacing-7:    1.75rem;   /* 28px */
+  --spacing-8:    2rem;      /* 32px */
+  --spacing-9:    2.25rem;   /* 36px */
+  --spacing-10:   2.5rem;    /* 40px */
+  --spacing-11:   2.75rem;   /* 44px */
+  --spacing-12:   3rem;      /* 48px */
+  --spacing-14:   3.5rem;    /* 56px */
+  --spacing-16:   4rem;      /* 64px */
+  --spacing-20:   5rem;      /* 80px */
+  --spacing-24:   6rem;      /* 96px */
+  --spacing-28:   7rem;      /* 112px */
+  --spacing-32:   8rem;      /* 128px */
+  --spacing-36:   9rem;      /* 144px */
+  --spacing-40:   10rem;     /* 160px */
+  --spacing-48:   12rem;     /* 192px */
+  --spacing-56:   14rem;     /* 224px */
+  --spacing-64:   16rem;     /* 256px */
+  --spacing-72:   18rem;     /* 288px */
+  --spacing-80:   20rem;     /* 320px */
+  --spacing-96:   24rem;     /* 384px */
+
+  /* ── BORDER RADIUS ───────────────────────────────────── */
+  --radius-none:  0;
+  --radius-xs:    0.125rem;  /* 2px  */
+  --radius-sm:    0.25rem;   /* 4px  */
+  --radius-md:    0.375rem;  /* 6px  */
+  --radius-lg:    0.5rem;    /* 8px  */
+  --radius-xl:    0.75rem;   /* 12px */
+  --radius-2xl:   1rem;      /* 16px */
+  --radius-3xl:   1.5rem;    /* 24px */
+  --radius-full:  9999px;
+
+  /* ── SHADOWS ─────────────────────────────────────────── */
+  --shadow-xs:  0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-sm:  0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  --shadow-md:  0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg:  0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --shadow-xl:  0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  --shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+  --shadow-inner: inset 0 2px 4px 0 rgb(0 0 0 / 0.05);
+  --shadow-none: none;
+
+  /* ── TRANSITIONS ─────────────────────────────────────── */
+  --ease-linear:      linear;
+  --ease-in:          cubic-bezier(0.4, 0, 1, 1);
+  --ease-out:         cubic-bezier(0, 0, 0.2, 1);
+  --ease-in-out:      cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-bounce:      cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-smooth:      cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+  --duration-75:   75ms;
+  --duration-100:  100ms;
+  --duration-150:  150ms;
+  --duration-200:  200ms;
+  --duration-300:  300ms;
+  --duration-500:  500ms;
+  --duration-700:  700ms;
+  --duration-1000: 1000ms;
+
+  /* ── BREAKPOINTS ─────────────────────────────────────── */
+  --breakpoint-xs: 475px;
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1536px;
+
+  /* ── Z-INDEX ──────────────────────────────────────────── */
+  --z-index-0:       0;
+  --z-index-10:      10;
+  --z-index-20:      20;
+  --z-index-30:      30;
+  --z-index-40:      40;
+  --z-index-50:      50;
+  --z-index-dropdown:  1000;
+  --z-index-sticky:    1020;
+  --z-index-modal:     1050;
+  --z-index-tooltip:   1080;
+  --z-index-toast:     1090;
+
+  /* ── OPACITY ─────────────────────────────────────────── */
+  --opacity-0:   0;
+  --opacity-5:   0.05;
+  --opacity-10:  0.1;
+  --opacity-20:  0.2;
+  --opacity-25:  0.25;
+  --opacity-50:  0.5;
+  --opacity-75:  0.75;
+  --opacity-90:  0.9;
+  --opacity-100: 1;
+}
+
