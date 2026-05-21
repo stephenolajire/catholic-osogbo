@@ -26,10 +26,7 @@ const LayFaithful = () => {
     const normalizedSearch = search.trim().toLowerCase();
 
     return associations.filter((association) => {
-      const leaderText = [
-        association.chaplain,
-        ...association.officers,
-      ]
+      const leaderText = [association.chaplain, ...association.officers]
         .map((leader) => `${leader.name} ${leader.roleLabel} ${leader.parish}`)
         .join(" ")
         .toLowerCase();
@@ -40,8 +37,7 @@ const LayFaithful = () => {
         association.acronym.toLowerCase().includes(normalizedSearch) ||
         association.description.toLowerCase().includes(normalizedSearch) ||
         leaderText.includes(normalizedSearch);
-      const matchCategory =
-        !category || association.categoryLabel === category;
+      const matchCategory = !category || association.categoryLabel === category;
 
       return matchSearch && matchCategory;
     });

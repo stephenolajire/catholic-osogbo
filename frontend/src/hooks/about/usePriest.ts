@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import priestService, {type Priest } from "../../services/about/priestService";
+import priestService, { type Priest } from "../../services/about/priestService";
 
 const TWENTY_FOUR_HOURS = 1000 * 60 * 60 * 24;
 

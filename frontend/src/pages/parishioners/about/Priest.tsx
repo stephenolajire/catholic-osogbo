@@ -18,8 +18,7 @@ const DEFAULT_PRIESTS: PriestType[] = [
     roleLabel: "Bishop",
     parish: "Cathedral of Christ the King, Osogbo",
     deanery: "Cathedral Deanery",
-    imageUrl:
-      "/image.png",
+    imageUrl: "/image.png",
     bio: "Most Rev. John Akin Oyejola has served as the Bishop of the Catholic Diocese of Osogbo since 2010. He is known for his pastoral zeal, commitment to education, and deep spirituality.",
     ordainedYear: 1990,
     isActive: true,
