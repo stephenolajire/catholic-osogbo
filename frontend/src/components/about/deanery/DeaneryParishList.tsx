@@ -6,25 +6,25 @@ type Props = {
 };
 
 const DeaneryParishList = ({ parishes }: Props) => (
-  <ul className="mt-4 space-y-0 divide-y divide-neutral-800/60">
+  <ul className="space-y-0 divide-y divide-amber-200/40">
     {parishes.map((parish, i) => (
       <li
         key={parish.id}
-        className="flex items-start gap-3 py-2.5 group/item"
+        className="flex items-start gap-4 py-4 group/item hover:bg-amber-50/40 transition-colors duration-200 pl-2"
         style={{ animationDelay: `${i * 30}ms` }}
       >
-        {/* Number */}
-        <span className="shrink-0 w-5 h-5 rounded-full bg-neutral-800 text-neutral-500 text-[10px] font-bold flex items-center justify-center mt-0.5 group-hover/item:bg-primary-600 group-hover/item:text-white transition-colors duration-200">
+        {/* Number badge */}
+        <span className="shrink-0 w-7 h-7 rounded-full bg-gradient-to-br from-amber-200 to-orange-200 text-amber-800 text-xs font-bold flex items-center justify-center mt-0.5 group-hover/item:from-amber-500 group-hover/item:to-orange-500 group-hover/item:text-white group-hover/item:shadow-md transition-all duration-200">
           {i + 1}
         </span>
 
         <div className="flex-1 min-w-0">
-          <p className="text-neutral-200 text-sm font-medium leading-snug group-hover/item:text-white transition-colors">
+          <p className="text-amber-950 font-serif font-semibold text-base leading-snug group-hover/item:text-amber-700 transition-colors">
             {parish.name}
           </p>
-          <div className="flex items-center gap-1 mt-0.5">
-            <MapPin size={9} className="text-primary-500 shrink-0" />
-            <p className="text-neutral-500 text-xs truncate">
+          <div className="flex items-center gap-2 mt-1.5">
+            <MapPin size={14} className="text-amber-600 shrink-0" />
+            <p className="text-amber-700/70 text-sm truncate font-light">
               {parish.location}
             </p>
           </div>
