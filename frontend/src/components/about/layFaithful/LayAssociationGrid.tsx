@@ -8,17 +8,16 @@ type Props = {
 };
 
 const SkeletonAssociation = () => (
-  <div className="bg-[#f7f4ef] border border-neutral-900/10 rounded-[2rem] overflow-hidden animate-pulse">
-    <div className="grid lg:grid-cols-[320px_1fr]">
-      <div className="min-h-72 bg-neutral-200" />
-      <div className="p-6 space-y-4">
-        <div className="h-5 bg-neutral-200 rounded-full w-48" />
-        <div className="h-3 bg-neutral-100 rounded-full w-full" />
-        <div className="h-3 bg-neutral-100 rounded-full w-3/4" />
-        <div className="grid md:grid-cols-3 gap-3 pt-4">
-          <div className="h-32 bg-neutral-100 rounded-3xl" />
-          <div className="h-32 bg-neutral-100 rounded-3xl" />
-          <div className="h-32 bg-neutral-100 rounded-3xl" />
+  <div className="bg-white border border-amber-100/60 rounded-2xl overflow-hidden animate-pulse">
+    <div className="grid lg:grid-cols-[340px_1fr]">
+      <div className="min-h-80 bg-linear-to-br from-amber-100 to-orange-100" />
+      <div className="p-7 md:p-8 space-y-4">
+        <div className="h-6 bg-amber-100 rounded-full w-48" />
+        <div className="h-4 bg-amber-50 rounded-full w-full" />
+        <div className="h-4 bg-amber-50 rounded-full w-3/4" />
+        <div className="pt-4 space-y-3">
+          <div className="h-32 bg-amber-50 rounded-xl" />
+          <div className="h-32 bg-amber-50 rounded-xl" />
         </div>
       </div>
     </div>
@@ -28,7 +27,7 @@ const SkeletonAssociation = () => (
 const LayAssociationGrid = ({ associations, isLoading }: Props) => {
   if (isLoading) {
     return (
-      <div className="space-y-5">
+      <div className="space-y-6">
         {[...Array(3)].map((_, i) => (
           <SkeletonAssociation key={i} />
         ))}
@@ -38,22 +37,22 @@ const LayAssociationGrid = ({ associations, isLoading }: Props) => {
 
   if (!associations.length) {
     return (
-      <div className="flex flex-col items-center justify-center py-20 text-center">
-        <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mb-4">
-          <Search size={24} className="text-neutral-300" />
+      <div className="flex flex-col items-center justify-center py-24 text-center">
+        <div className="w-20 h-20 bg-linear-to-br from-amber-100 to-orange-100 rounded-full flex items-center justify-center mb-6 shadow-lg">
+          <Search size={32} className="text-amber-600/50" />
         </div>
-        <p className="text-neutral-700 font-semibold text-base mb-1">
+        <p className="text-amber-950 font-serif font-bold text-xl mb-2">
           No association found
         </p>
-        <p className="text-neutral-400 text-sm">
-          Try a different association, leader, or category
+        <p className="text-amber-700/70 text-base">
+          Try searching with a different keyword, association name, or category.
         </p>
       </div>
     );
   }
 
   return (
-    <div className="space-y-5">
+    <div className="space-y-6">
       {associations.map((association) => (
         <LayAssociationCard key={association.id} association={association} />
       ))}

@@ -29,10 +29,6 @@ const BishopMessageModal = ({ message, categoryColor, onClose }: Props) => {
             src={message.imageUrl}
             alt={message.title}
             className="w-full h-full object-cover"
-            onError={(e) => {
-              (e.target as HTMLImageElement).src =
-                "https://images.unsplash.com/photo-1508558936510-0af1e3cccbab?w=800&q=80";
-            }}
           />
           <div className="absolute inset-0 bg-linear-to-t from-black/70 via-black/20 to-transparent" />
 

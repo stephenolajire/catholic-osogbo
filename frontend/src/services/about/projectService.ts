@@ -32,8 +32,8 @@ export type Project = {
 
 const projectService = {
   getProjects: async (): Promise<Project[]> => {
-    const { data } = await apiClient.get("/projects");
-    return data;
+    const { data } = await apiClient.get("/content/projects");
+    return data.results || data;
   },
 };
 

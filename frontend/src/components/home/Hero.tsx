@@ -11,11 +11,10 @@ const DEFAULT_SLIDES = [
     subtitle: "Faith, Hope & Love",
     description:
       "Join us as we journey together in faith, serving God and our community with devotion and compassion.",
-    imageUrl:
+    image:
       "https://images.unsplash.com/photo-1519817650390-64a93db51149?w=1600&q=80",
-    ctaLabel: "Explore More",
-    ctaLink: "/about/priest",
     isActive: true,
+    displayOrder: 0,
     createdAt: "",
     updatedAt: "",
   },
@@ -25,11 +24,10 @@ const DEFAULT_SLIDES = [
     subtitle: "One Body, One Spirit",
     description:
       "Our parishes stand as pillars of community places of worship, fellowship, and spiritual growth for all.",
-    imageUrl:
+    image:
       "https://images.unsplash.com/photo-1544427920-c49ccfb85579?w=1600&q=80",
-    ctaLabel: "Our Parishes",
-    ctaLink: "/about/parishes",
     isActive: true,
+    displayOrder: 1,
     createdAt: "",
     updatedAt: "",
   },
@@ -39,11 +37,10 @@ const DEFAULT_SLIDES = [
     subtitle: "Ministry in Action",
     description:
       "From education to healthcare, our institutions exist to serve every soul entrusted to our care.",
-    imageUrl:
+    image:
       "https://images.unsplash.com/photo-1519817650390-64a93db51149?w=1600&q=80",
-    ctaLabel: "Our Institutions",
-    ctaLink: "/institutions/education",
     isActive: true,
+    displayOrder: 2,
     createdAt: "",
     updatedAt: "",
   },
@@ -55,10 +52,9 @@ type Slide = {
   title: string;
   subtitle: string;
   description: string;
-  imageUrl: string;
-  ctaLabel: string;
-  ctaLink: string;
+  image: string;
   isActive: boolean;
+  displayOrder: number;
   createdAt: string;
   updatedAt: string;
 };
@@ -75,13 +71,10 @@ const HeroSection = () => {
 
   const [current, setCurrent] = useState(0);
   const [animating, setAnimating] = useState(false);
-  const [direction, setDirection] = useState<"left" | "right">("right");
 
-  console.log(direction);
   const goTo = useCallback(
-    (index: number, dir: "left" | "right") => {
+    (index: number) => {
       if (animating || index === current) return;
-      setDirection(dir);
       setAnimating(true);
       setTimeout(() => {
         setCurrent(index);
@@ -93,12 +86,12 @@ const HeroSection = () => {
 
   const prev = useCallback(() => {
     const index = (current - 1 + slides.length) % slides.length;
-    goTo(index, "left");
+    goTo(index);
   }, [current, slides.length, goTo]);
 
   const next = useCallback(() => {
     const index = (current + 1) % slides.length;
-    goTo(index, "right");
+    goTo(index);
   }, [current, slides.length, goTo]);
 
   // Auto-advance every 6 seconds
@@ -120,7 +113,7 @@ const HeroSection = () => {
   const slide = slides[current];
 
   return (
-    <section className="relative w-full h-[90vh] min-h-140 overflow-hidden bg-neutral-900">
+    <section className="relative h-[90vh] min-h-140 w-full overflow-hidden bg-stone-900">
       {/* ── Slides ── */}
       {slides.map((s, i) => (
         <div
@@ -130,27 +123,27 @@ const HeroSection = () => {
         >
           {/* Background image */}
           <img
-            src={s.imageUrl}
+            src={s.image}
             alt={s.title}
-            className="absolute inset-0 w-full h-full object-cover"
+            className="absolute inset-0 h-full w-full object-cover"
           />
 
           {/* Gradient overlay */}
-          <div className="absolute inset-0 bg-linear-to-r from-black/75 via-black/40 to-transparent" />
-          <div className="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent" />
+          <div className="absolute inset-0 bg-linear-to-r from-stone-950/85 via-stone-950/50 to-transparent" />
+          <div className="absolute inset-0 bg-linear-to-t from-stone-950/70 via-transparent to-transparent" />
         </div>
       ))}
 
       {/* ── Content ── */}
-      <div className="relative z-20 flex flex-col justify-end h-full pb-24 px-6 md:px-16 lg:px-24 max-w-4xl">
+      <div className="relative z-20 flex h-full max-w-4xl flex-col justify-end px-6 pb-24 md:px-16 lg:px-24">
         {/* Subtitle pill */}
         <div
           key={`subtitle-${current}`}
-          className="inline-flex items-center gap-2 mb-4 animate-fade-in-up"
+          className="mb-4 inline-flex items-center gap-2"
           style={{ animation: "fadeInUp 0.5s ease forwards" }}
         >
-          <span className="w-6 h-0.5 bg-primary-400" />
-          <span className="text-primary-300 text-xs font-semibold uppercase tracking-widest">
+          <span className="h-0.5 w-6 bg-stone-400" />
+          <span className="text-xs font-semibold uppercase tracking-widest text-stone-300">
             {slide.subtitle}
           </span>
         </div>
@@ -158,7 +151,7 @@ const HeroSection = () => {
         {/* Title */}
         <h1
           key={`title-${current}`}
-          className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-4"
+          className="mb-4 font-serif text-4xl font-bold leading-tight text-white md:text-5xl lg:text-6xl"
           style={{ animation: "fadeInUp 0.6s ease 0.1s both" }}
         >
           {slide.title}
@@ -167,30 +160,24 @@ const HeroSection = () => {
         {/* Description */}
         <p
           key={`desc-${current}`}
-          className="text-neutral-300 text-base md:text-lg max-w-xl mb-8 leading-relaxed"
+          className="mb-8 max-w-xl text-base font-light leading-relaxed text-stone-300 md:text-lg"
           style={{ animation: "fadeInUp 0.6s ease 0.2s both" }}
         >
           {slide.description}
         </p>
 
-        {/* CTA */}
+        {/* CTA Button */}
         <div
           key={`cta-${current}`}
           className="flex items-center gap-4"
           style={{ animation: "fadeInUp 0.6s ease 0.3s both" }}
         >
           <Link
-            to={slide.ctaLink}
-            className="inline-flex items-center gap-2 bg-primary-600 hover:bg-primary-700 text-white text-sm font-semibold px-6 py-3 rounded-full transition-all duration-200 shadow-lg hover:shadow-primary-900/40 hover:-translate-y-0.5"
-          >
-            {slide.ctaLabel}
-            <ChevronRight size={16} />
-          </Link>
-          <Link
             to="/contact"
-            className="text-sm font-semibold text-white/80 hover:text-white border border-white/30 hover:border-white/60 px-6 py-3 rounded-full transition-all duration-200"
+            className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-semibold text-stone-900 shadow-lg transition-all duration-200 hover:-translate-y-0.5 hover:bg-stone-100"
           >
             Get In Touch
+            <ChevronRight size={16} />
           </Link>
         </div>
       </div>
@@ -199,52 +186,51 @@ const HeroSection = () => {
       <button
         onClick={prev}
         aria-label="Previous slide"
-        className="absolute left-2 md:left-8 top-1/2 -translate-y-1/2 z-30
-          w-10 h-10 md:w-12 md:h-12 flex items-center justify-center
-          rounded-full bg-white/10 hover:bg-white/20 border border-white/20
-          text-white backdrop-blur-sm transition-all duration-200 hover:-translate-y-1/2 hover:scale-110"
+        className="absolute left-2 top-1/2 z-30 flex h-10 w-10 -translate-y-1/2
+          items-center justify-center rounded-full border border-white/15
+          bg-white/10 text-white backdrop-blur-sm transition-all duration-200
+          hover:-translate-y-1/2 hover:scale-110 hover:bg-white/20 md:left-8 md:h-12 md:w-12"
       >
         <ChevronLeft size={20} />
       </button>
       <button
         onClick={next}
         aria-label="Next slide"
-        className="absolute right-2 md:right-8 top-1/2 -translate-y-1/2 z-30
-          w-10 h-10 md:w-12 md:h-12 flex items-center justify-center
-          rounded-full bg-white/10 hover:bg-white/20 border border-white/20
-          text-white backdrop-blur-sm transition-all duration-200 hover:-translate-y-1/2 hover:scale-110"
+        className="absolute right-2 top-1/2 z-30 flex h-10 w-10 -translate-y-1/2
+          items-center justify-center rounded-full border border-white/15
+          bg-white/10 text-white backdrop-blur-sm transition-all duration-200
+          hover:-translate-y-1/2 hover:scale-110 hover:bg-white/20 md:right-8 md:h-12 md:w-12"
       >
         <ChevronRight size={20} />
       </button>
 
       {/* ── Dot indicators ── */}
-      <div className="absolute bottom-8 left-6 md:left-16 lg:left-24 z-30 flex items-center gap-2">
+      <div className="absolute bottom-8 left-6 z-30 flex items-center gap-2 md:left-16 lg:left-24">
         {slides.map((_, i) => (
           <button
             key={i}
-            onClick={() => goTo(i, i > current ? "right" : "left")}
+            onClick={() => goTo(i)}
             aria-label={`Go to slide ${i + 1}`}
-            className={`transition-all duration-300 rounded-full
-              ${
-                i === current
-                  ? "w-8 h-2 bg-primary-500"
-                  : "w-2 h-2 bg-white/40 hover:bg-white/70"
-              }`}
+            className={`rounded-full transition-all duration-300 ${
+              i === current
+                ? "h-2 w-8 bg-white"
+                : "h-2 w-2 bg-white/40 hover:bg-white/70"
+            }`}
           />
         ))}
       </div>
 
       {/* ── Slide counter ── */}
-      <div className="absolute bottom-8 right-6 md:right-16 z-30 text-white/50 text-xs font-mono tracking-widest">
+      <div className="absolute bottom-8 right-6 z-30 font-mono text-xs tracking-widest text-white/50 md:right-16">
         {String(current + 1).padStart(2, "0")} /{" "}
         {String(slides.length).padStart(2, "0")}
       </div>
 
       {/* ── Progress bar ── */}
-      <div className="absolute bottom-0 left-0 w-full h-0.5 bg-white/10 z-30">
+      <div className="absolute bottom-0 left-0 z-30 h-0.5 w-full bg-white/10">
         <div
           key={current}
-          className="h-full bg-primary-500"
+          className="h-full bg-white"
           style={{ animation: "progress 6s linear forwards" }}
         />
       </div>

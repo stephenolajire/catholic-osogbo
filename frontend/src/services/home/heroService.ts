@@ -5,10 +5,9 @@ export type Hero = {
   title: string;
   subtitle: string;
   description: string;
-  imageUrl: string;
-  ctaLabel: string;
-  ctaLink: string;
+  image: string;
   isActive: boolean;
+  displayOrder: number;
   createdAt: string;
   updatedAt: string;
 };
@@ -20,12 +19,12 @@ const heroService = {
   },
 
   getHeroes: async (): Promise<Hero[]> => {
-    const { data } = await apiClient.get("/heroes");
-    return data;
+    const { data } = await apiClient.get("/hero");
+    return Array.isArray(data) ? data : [data];
   },
 
   getActiveHero: async (): Promise<Hero> => {
-    const { data } = await apiClient.get("/heroes/active");
+    const { data } = await apiClient.get("/hero/active");
     return data;
   },
 };

@@ -13,8 +13,7 @@ We are a people bound together by one faith, one baptism, and one Lord. Through 
 May this space inspire you, connect you with our vibrant community, and deepen your walk with God. Together, let us continue to build the Kingdom of God in Osogbo and beyond.`,
   bishopName: "Most Rev. John Akin Oyejola",
   bishopTitle: "Bishop of the Catholic Diocese of Osogbo",
-  bishopImageUrl:
-    "/image.png",
+  bishopImageUrl: "/image.png",
   signature: "Yours in Christ's service",
   isActive: true,
   createdAt: "",
@@ -51,7 +50,7 @@ const GreetingSection = () => {
   if (isLoading && !isError) return <GreetingSkeleton />;
 
   const greeting: Greeting = data ?? DEFAULT_GREETING;
-  const paragraphs = greeting.welcomeText.split("\n\n").filter(Boolean);
+  const paragraphs = (greeting.welcomeText || "").split("\n\n").filter(Boolean);
 
   return (
     <section className="relative py-24 px-6 md:px-16 lg:px-24 bg-neutral-50 overflow-hidden">
@@ -110,22 +109,6 @@ const GreetingSection = () => {
                 {para}
               </p>
             ))}
-          </div>
-
-          {/* Signature block */}
-          <div className="flex items-center gap-4 p-5 bg-white rounded-2xl border border-neutral-100 shadow-sm mb-8">
-            <div className="w-1 self-stretch bg-primary-500 rounded-full shrink-0" />
-            <div>
-              <p className="text-neutral-400 text-xs italic mb-1">
-                {greeting.signature},
-              </p>
-              <p className="text-neutral-900 font-bold text-sm">
-                {greeting.bishopName}
-              </p>
-              <p className="text-primary-600 text-xs font-medium mt-0.5">
-                {greeting.bishopTitle}
-              </p>
-            </div>
           </div>
 
           {/* ✅ CTA — full width stacked on mobile, inline on sm+ */}

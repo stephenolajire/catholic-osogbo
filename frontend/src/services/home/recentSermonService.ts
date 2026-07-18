@@ -8,12 +8,13 @@ export type RecentSermon = {
   excerpt: string;
   imageUrl: string;
   link: string;
+  fullMessage?: string;
 };
 
 const recentSermonService = {
   getRecentSermons: async (): Promise<RecentSermon[]> => {
-    const { data } = await apiClient.get("/sermons/recent");
-    return data;
+    const { data } = await apiClient.get("/sermons/recent/");
+    return data.results || data;
   },
 };
 

@@ -50,7 +50,7 @@ const DeaneryCard = ({ deanery, index, isActive, onToggle }: Props) => {
 
   return (
     <div
-      className={`group bg-gradient-to-br ${bgAccent} rounded-xl overflow-hidden border transition-all duration-300
+      className={`group bg-linear-to-br ${bgAccent} rounded-xl overflow-hidden border transition-all duration-300
         ${
           isActive
             ? "bg-white shadow-sm border-amber-200"
@@ -58,7 +58,7 @@ const DeaneryCard = ({ deanery, index, isActive, onToggle }: Props) => {
         }`}
     >
       {/* Decorative top accent line */}
-      <div className={`h-[3px] w-full bg-gradient-to-r ${accent} opacity-70`} />
+      <div className={`h-[3px] w-full bg-linear-to-r ${accent} opacity-70`} />
 
       {/* Card header — clickable toggle */}
       <button
@@ -96,7 +96,7 @@ const DeaneryCard = ({ deanery, index, isActive, onToggle }: Props) => {
           className={`shrink-0 w-9 h-9 rounded-full flex items-center justify-center transition-all duration-300 flex-none
             ${
               isActive
-                ? `bg-gradient-to-br ${accent} text-white shadow-sm`
+                ? `bg-linear-to-br ${accent} text-white shadow-sm`
                 : `bg-stone-100 ${textAccent} opacity-80 group-hover:bg-stone-200/70`
             }`}
         >
@@ -114,7 +114,7 @@ const DeaneryCard = ({ deanery, index, isActive, onToggle }: Props) => {
             {deanery.parishes.slice(0, 3).map((p) => (
               <div key={p.id} className="flex items-center gap-3">
                 <div
-                  className={`w-1.5 h-1.5 rounded-full bg-gradient-to-r ${accent} flex-shrink-0 opacity-70`}
+                  className={`w-1.5 h-1.5 rounded-full bg-linear-to-r ${accent} flex-shrink-0 opacity-70`}
                 />
                 <span className="text-stone-500 text-sm truncate font-medium">
                   {p.name}

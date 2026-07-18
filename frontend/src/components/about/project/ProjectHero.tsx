@@ -1,51 +1,45 @@
-const ProjectHero = () => (
-  <div className="relative bg-primary-900 overflow-hidden">
-    {/* Decorative background pattern */}
-    <div className="absolute inset-0 opacity-10">
-      <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary-400 rounded-full blur-3xl -translate-y-1/2" />
-      <div className="absolute bottom-0 right-1/4 w-64 h-64 bg-primary-300 rounded-full blur-2xl translate-y-1/3" />
-    </div>
+import { useState } from "react";
+import { Hammer } from "lucide-react";
 
-    <div className="relative px-6 md:px-25 py-20 md:py-28 w-full mx-auto">
-      <div className="max-w-2xl">
-        {/* Eyebrow */}
-        <div className="flex items-center gap-3 mb-5">
-          <span className="w-8 h-0.5 bg-primary-400" />
-          <span className="text-primary-300 text-xs font-semibold uppercase tracking-widest">
-            Diocese of Osogbo
+const FALLBACK_IMAGE =
+  "https://images.unsplash.com/photo-1438032005730-c779502df39b?w=1600&q=80";
+
+const ProjectHero = () => {
+  const [imgSrc, setImgSrc] = useState(
+    "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=1600&q=80",
+  );
+
+  return (
+    <section className="relative overflow-hidden bg-stone-900">
+      <div className="absolute inset-0">
+        <img
+          src={imgSrc}
+          alt=""
+          className="h-full w-full object-cover opacity-40"
+          onError={() => setImgSrc(FALLBACK_IMAGE)}
+        />
+        <div className="absolute inset-0 bg-linear-to-b from-stone-950/80 via-stone-950/70 to-stone-950/90" />
+      </div>
+
+      <div className="relative px-6 py-24 text-center md:px-16 lg:px-24 lg:py-28">
+        <div className="mx-auto flex max-w-2xl flex-col items-center">
+          <span className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-stone-300">
+            <Hammer size={13} className="text-stone-400" />
+            Building the Kingdom
           </span>
-        </div>
-
-        {/* Heading */}
-        <h1 className="font-display text-4xl md:text-5xl font-bold text-white leading-tight mb-4">
-          Diocesan Projects
-        </h1>
-
-        {/* Sub */}
-        <p className="text-primary-200 text-base md:text-lg leading-relaxed max-w-xl">
-          Building the Kingdom of God through faith-driven initiatives — from
-          church construction to education, healthcare, and community
-          transformation.
-        </p>
-
-        {/* Stats row */}
-        <div className="flex flex-wrap gap-8 mt-10">
-          {[
-            { label: "Active Projects", value: "24+" },
-            { label: "Deaneries Covered", value: "8" },
-            { label: "Completed", value: "60+" },
-          ].map((stat) => (
-            <div key={stat.label}>
-              <p className="text-white text-2xl font-bold">{stat.value}</p>
-              <p className="text-primary-300 text-xs font-medium mt-0.5">
-                {stat.label}
-              </p>
-            </div>
-          ))}
+          <h1 className="font-serif text-4xl font-bold text-white md:text-5xl">
+            Diocesan Projects
+          </h1>
+          <p className="mt-4 text-lg font-light leading-relaxed text-stone-300">
+            Constructing the foundation of faith through transformative
+            initiatives — from sacred church buildings to educational
+            institutions, healthcare facilities, and community development that
+            glorify God and serve His people.
+          </p>
         </div>
       </div>
-    </div>
-  </div>
-);
+    </section>
+  );
+};
 
 export default ProjectHero;

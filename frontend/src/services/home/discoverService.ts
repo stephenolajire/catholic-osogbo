@@ -1,22 +1,17 @@
-import apiClient from "../../api/apiClient";
+import bishopMessageService, {
+  type BishopMessage,
+} from "../bishop/bishopMessageService";
 
-export type DiscoverMessage = {
-  id: string;
-  title: string;
-  excerpt: string;
-  fullMessage: string;
-  imageUrl: string;
-  date: string;
-  category: string;
-  isActive: boolean;
-  createdAt: string;
-  updatedAt: string;
-};
+export type DiscoverMessage = BishopMessage;
 
 const discoverService = {
   getMessages: async (): Promise<DiscoverMessage[]> => {
-    const { data } = await apiClient.get("/discover/messages");
-    return data;
+    const response = await bishopMessageService.getMessages(1, 4);
+    return response.messages;
+  },
+
+  getMessageById: async (id: string): Promise<DiscoverMessage> => {
+    return bishopMessageService.getMessageById(id);
   },
 };
 

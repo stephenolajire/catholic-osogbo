@@ -12,8 +12,8 @@ export type RecentNewsItem = {
 
 const recentNewsService = {
   getRecentNews: async (): Promise<RecentNewsItem[]> => {
-    const { data } = await apiClient.get("/news/recent");
-    return data;
+    const { data } = await apiClient.get("/news/recent/");
+    return data.results || data;
   },
 };
 

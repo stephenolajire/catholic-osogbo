@@ -25,8 +25,8 @@ export type Priest = {
 
 const priestService = {
   getPriests: async (): Promise<Priest[]> => {
-    const { data } = await apiClient.get("/priests");
-    return data;
+    const { data } = await apiClient.get("/bishop/priests");
+    return data.results || data;
   },
 };
 

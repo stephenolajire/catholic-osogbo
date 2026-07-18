@@ -4,7 +4,7 @@ type Props = {
 };
 
 const DeaneryStats = ({ deaneryCount, parishCount }: Props) => (
-  <div className="bg-gradient-to-r from-amber-700 to-amber-600 px-6 md:px-16 lg:px-24 py-12 relative overflow-hidden">
+  <div className="bg-linear-to-r from-amber-700 to-amber-600 px-6 md:px-16 lg:px-24 py-12 relative overflow-hidden">
     {/* Decorative cross pattern */}
     <div className="absolute inset-0 opacity-5 pointer-events-none">
       <div className="absolute top-0 right-0 w-40 h-40">

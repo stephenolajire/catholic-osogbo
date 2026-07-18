@@ -16,34 +16,26 @@ const LayFaithfulFilterBar = ({
   onSearch,
   onCategory,
 }: Props) => (
-  <div className="bg-white border border-neutral-900/10 rounded-3xl p-4 shadow-sm">
+  <div className="bg-white/95 backdrop-blur-sm border border-amber-200/30 rounded-2xl p-5 shadow-lg">
     <div className="flex flex-col md:flex-row gap-3">
       <div className="relative flex-1">
         <Search
-          size={15}
-          className="absolute left-3.5 top-1/2 -translate-y-1/2 text-neutral-400"
+          size={16}
+          className="absolute left-4 top-1/2 -translate-y-1/2 text-amber-600/60"
         />
         <input
           value={search}
           onChange={(e) => onSearch(e.target.value)}
           placeholder="Search associations, chaplains, officers..."
-          className="w-full pl-9 pr-9 py-2.5 rounded-2xl bg-[#fbfaf7] border border-neutral-200 text-sm text-neutral-800 placeholder:text-neutral-400 focus:outline-none transition-all"
-          onFocus={(e) => {
-            e.target.style.borderColor = "#8f3f24";
-            e.target.style.boxShadow = "0 0 0 3px rgb(143 63 36 / 0.12)";
-          }}
-          onBlur={(e) => {
-            e.target.style.borderColor = "";
-            e.target.style.boxShadow = "";
-          }}
+          className="w-full pl-11 pr-10 py-3 rounded-xl bg-amber-50/50 border border-amber-200/50 text-sm text-amber-950 placeholder:text-amber-400/60 focus:outline-none focus:ring-2 focus:ring-amber-300 focus:border-transparent transition-all"
         />
         {search && (
           <button
             onClick={() => onSearch("")}
-            className="absolute right-3 top-1/2 -translate-y-1/2 text-neutral-400 hover:text-neutral-600"
+            className="absolute right-3 top-1/2 -translate-y-1/2 text-amber-400 hover:text-amber-600 transition-colors"
             aria-label="Clear search"
           >
-            <X size={14} />
+            <X size={16} />
           </button>
         )}
       </div>
@@ -51,7 +43,7 @@ const LayFaithfulFilterBar = ({
       <select
         value={category}
         onChange={(e) => onCategory(e.target.value)}
-        className="py-2.5 px-3.5 rounded-2xl bg-[#fbfaf7] border border-neutral-200 text-sm text-neutral-700 focus:outline-none cursor-pointer"
+        className="py-3 px-4 rounded-xl bg-amber-50/50 border border-amber-200/50 text-sm text-amber-950 font-medium focus:outline-none focus:ring-2 focus:ring-amber-300 cursor-pointer transition-all"
       >
         <option value="">All Categories</option>
         {categories.map((c) => (

@@ -1,82 +1,58 @@
+import { MapPin } from "lucide-react";
+
 type Props = {
   totalParishes: number;
   totalDeaneries: number;
 };
 
 const ParishHero = ({ totalParishes, totalDeaneries }: Props) => (
-  <div className="relative bg-neutral-950 overflow-hidden">
-    {/* Diagonal gold accent stripe */}
-    <div
-      className="absolute inset-0 opacity-[0.07]"
-      style={{
-        backgroundImage:
-          "repeating-linear-gradient(-55deg, #d97706 0px, #d97706 1px, transparent 1px, transparent 48px)",
-      }}
-    />
+  <section className="relative overflow-hidden bg-stone-900">
+    <div className="absolute inset-0">
+      <img
+        src="https://images.unsplash.com/photo-1548625149-fc4a29cf7092?w=1600&q=80"
+        alt=""
+        className="h-full w-full object-cover opacity-40"
+      />
+      <div className="absolute inset-0 bg-linear-to-b from-stone-950/80 via-stone-950/70 to-stone-950/90" />
+    </div>
 
-    {/* Subtle warm wash */}
-    <div
-      className="absolute inset-x-0 top-0 h-32 opacity-10"
-      style={{
-        background: "linear-gradient(180deg, #d97706 0%, transparent 100%)",
-      }}
-    />
-
-    <div className="relative px-6 md:px-25 pt-16 pb-0 w-full mx-auto">
-      {/* Eyebrow */}
-      <div className="flex items-center gap-3 mb-8">
-        <span className="w-6 h-px bg-warning" />
-        <span
-          className="text-warning text-[10px] font-bold uppercase tracking-[0.25em]"
-          style={{ fontFamily: "var(--font-sans)" }}
-        >
+    <div className="relative px-6 py-24 text-center md:px-16 lg:px-24 lg:py-28">
+      <div className="mx-auto flex max-w-2xl flex-col items-center">
+        <span className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-stone-300">
+          <MapPin size={13} className="text-stone-400" />
           Catholic Diocese of Osogbo
         </span>
+        <h1 className="font-serif text-4xl font-bold text-white md:text-5xl">
+          Our Parishes
+        </h1>
+        <p className="mt-4 text-lg font-light leading-relaxed text-stone-300">
+          The local Church made visible — communities of faith rooted in every
+          corner of the Diocese of Osogbo.
+        </p>
       </div>
 
-      {/* Headline — editorial oversized */}
-      <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 pb-12 border-b border-neutral-800">
-        <div>
-          <h1
-            className="font-display text-5xl md:text-7xl font-bold text-white leading-none tracking-tight mb-4"
-            style={{ letterSpacing: 0 }}
+      {/* Stats */}
+      <div className="mx-auto mt-12 grid max-w-xl grid-cols-3 gap-4">
+        {[
+          { value: `${totalParishes}+`, label: "Parishes" },
+          { value: totalDeaneries, label: "Deaneries" },
+          { value: "1961", label: "Diocese Est." },
+        ].map((s) => (
+          <div
+            key={s.label}
+            className="rounded-2xl border border-white/10 bg-white/5 px-4 py-5 backdrop-blur-sm"
           >
-            Our
-            <br />
-            <span style={{ color: "var(--color-warning)" }}>Parishes</span>
-          </h1>
-          <p className="text-neutral-400 text-sm md:text-base leading-relaxed max-w-md">
-            The local Church made visible — communities of faith rooted in every
-            corner of the Diocese of Osogbo.
-          </p>
-        </div>
-
-        {/* Stats — vertical rule separated */}
-        <div className="flex gap-10 md:gap-12 pb-1">
-          {[
-            { value: totalParishes + "+", label: "Parishes" },
-            { value: totalDeaneries, label: "Deaneries" },
-            { value: "1961", label: "Diocese Est." },
-          ].map((s) => (
-            <div key={s.label} className="text-right">
-              <p
-                className="text-white font-bold"
-                style={{
-                  fontSize: "clamp(1.75rem, 4vw, 2.5rem)",
-                  lineHeight: 1,
-                }}
-              >
-                {s.value}
-              </p>
-              <p className="text-neutral-500 text-xs font-medium mt-1 uppercase tracking-wider">
-                {s.label}
-              </p>
-            </div>
-          ))}
-        </div>
+            <p className="font-serif text-3xl font-bold text-white">
+              {s.value}
+            </p>
+            <p className="mt-1.5 text-[11px] font-semibold uppercase tracking-widest text-stone-400">
+              {s.label}
+            </p>
+          </div>
+        ))}
       </div>
     </div>
-  </div>
+  </section>
 );
 
 export default ParishHero;

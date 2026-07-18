@@ -41,8 +41,8 @@ export type LayAssociation = {
 
 const layFaithfulService = {
   getLayAssociations: async (): Promise<LayAssociation[]> => {
-    const { data } = await apiClient.get("/lay-faithful");
-    return data;
+    const { data } = await apiClient.get("/content/associations");
+    return data.results || data;
   },
 };
 

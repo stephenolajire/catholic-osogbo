@@ -14,7 +14,7 @@ const DeaneryParishList = ({ parishes }: Props) => (
         style={{ animationDelay: `${i * 30}ms` }}
       >
         {/* Number badge */}
-        <span className="shrink-0 w-7 h-7 rounded-full bg-gradient-to-br from-amber-200 to-orange-200 text-amber-800 text-xs font-bold flex items-center justify-center mt-0.5 group-hover/item:from-amber-500 group-hover/item:to-orange-500 group-hover/item:text-white group-hover/item:shadow-md transition-all duration-200">
+        <span className="shrink-0 w-7 h-7 rounded-full bg-linear-to-br from-amber-200 to-orange-200 text-amber-800 text-xs font-bold flex items-center justify-center mt-0.5 group-hover/item:from-amber-500 group-hover/item:to-orange-500 group-hover/item:text-white group-hover/item:shadow-md transition-all duration-200">
           {i + 1}
         </span>
 

@@ -11,8 +11,8 @@ export type UpcomingEventItem = {
 
 const upcomingEventService = {
   getUpcomingEvents: async (): Promise<UpcomingEventItem[]> => {
-    const { data } = await apiClient.get("/events/upcoming");
-    return data;
+    const { data } = await apiClient.get("/events/upcoming/");
+    return data.results || data;
   },
 };
 
